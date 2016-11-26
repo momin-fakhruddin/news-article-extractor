@@ -1,36 +1,35 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-applicationDefaultJvmArgs = ["-Xmx4g"]
-
 repositories {
     mavenCentral()
-    maven {
-        url "http://cogcomp.cs.illinois.edu/m2repo"
-    }
 }
 
 dependencies {
+	compile files('/home/v2john/tools/boilerpipe-1.2.0/boilerpipe-1.2.0.jar')
+    compile files('/home/v2john/tools/boilerpipe-1.2.0/lib/nekohtml-1.9.13.jar')
+    compile files('/home/v2john/tools/boilerpipe-1.2.0/lib/xerces-2.9.1.jar')
     compile 'org.apache.logging.log4j:log4j-api:2.7'
     compile 'org.apache.logging.log4j:log4j-core:2.7'
     compile 'args4j:args4j:2.33'
-    compile 'jaxen:jaxen:1.1.6'
-    compile 'dom4j:dom4j:1.5.2'
-    compile 'org.slf4j:slf4j-api:1.7.12'
     compile 'org.projectlombok:lombok:1.16.10'
     compile 'org.apache.commons:commons-lang3:3.5'
-    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.6.3'
-    compile 'org.codehaus.woodstox:woodstox-core-asl:4.4.1'
-    compile 'edu.illinois.cs.cogcomp:illinois-ner:3.0.70-SNAPSHOT'
     compile 'commons-io:commons-io:2.5'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.8.3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.3'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.3'
+    compile 'org.jsoup:jsoup:1.10.1'
+    compile 'org.jetbrains:annotations:15.0'
+    compile 'org.seleniumhq.selenium:selenium-chrome-driver:3.0.1'
+    compile 'org.seleniumhq.selenium:selenium-support:3.0.1'
     testCompile 'junit:junit:4.12'
 }
 
-mainClassName = "ca.uwaterloo.ner.NamedEntityResolver"
+mainClassName = "ca.uwaterloo.article_extractor.NewsArticleExtractor"
 
 task createStartScripts(type: CreateStartScripts) {
-    mainClassName = "ca.uwaterloo.ner.NamedEntityResolver"
-    applicationName = 'NamedEntityResolver'
+    mainClassName = "ca.uwaterloo.article_extractor.NewsArticleExtractor"
+    applicationName = 'NewsArticleExtractor'
 }
 
 task copyDepLib(type: Copy) {
