@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleSearchHelper
@@ -40,10 +41,10 @@ public class ArticleSearchHelper
         driver.quit();
     }
 
-    public URL getURLForArticleHeadline(String articleHeadline)
+    public List<URL> getURLForArticleHeadline(String articleHeadline)
         throws InterruptedException
     {
-        URL articleURL = null;
+        List<URL> articleURLs = new ArrayList<>();
 
         try
         {
@@ -60,11 +61,11 @@ public class ArticleSearchHelper
 
             List<WebElement> findElements = driver.findElements(By.xpath(RESULTS_XPATH));
 
-            if (null != findElements && findElements.size() > 0)
+            for (WebElement webElement : findElements)
             {
                 try
                 {
-                    articleURL = new URL(findElements.get(0).getAttribute(RESULT_URL_ELEMENT));
+                    articleURLs.add(new URL(webElement.getAttribute(RESULT_URL_ELEMENT)));
                 }
                 catch (MalformedURLException e)
                 {
@@ -78,6 +79,6 @@ public class ArticleSearchHelper
             log.error(e);
         }
 
-        return articleURL;
+        return articleURLs;
     }
 }

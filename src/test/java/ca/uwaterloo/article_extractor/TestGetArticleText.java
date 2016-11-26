@@ -13,7 +13,7 @@ public class TestGetArticleText
     public void testGetArticle()
         throws IOException, BoilerpipeProcessingException
     {
-        URL url = new URL("http://www.proactiveinvestors.com/companies/news/67396/kingfisher-takeover-of-mr-bricolage-could-hit-a-brick-wall-78595.html");
+        URL url = new URL("http://www.dailyrecord.co.uk/business/company-results-forecasts/morrisons-book-second-consecutive-quarter-7900095");
         String articleText = ArticleContentExtractor.getArticleText(url);
         System.out.println(articleText);
     }

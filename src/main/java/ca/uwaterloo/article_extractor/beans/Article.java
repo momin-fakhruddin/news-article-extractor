@@ -8,7 +8,7 @@ import java.net.URL;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-@Setter(value = AccessLevel.PRIVATE)
+@Setter
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Article
